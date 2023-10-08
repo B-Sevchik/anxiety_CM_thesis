@@ -109,3 +109,26 @@ excluded_subjects <- excluded_drag_subjects %>%
 excluded_subjects
 
 #***check that this is right, maybe also do unique subs for first part
+
+
+
+
+
+#DEMOGRAPHICS
+
+demos <- read_csv('/Users/brookesevchik/Box/Data/Anxiety_Cognitive_Maps/all_participants/SubjectInfo.csv') %>% 
+  filter(! workerID %in% excluded_subjects$subject)
+demos
+
+get_sub_info <- function(demo){
+  print("Sex")
+  print(paste('F: ',sum(demo$Gender == 'F', na.rm=TRUE), sep=""))
+  print(paste('M: ',sum(demo$Gender == 'M', na.rm=TRUE), sep=""))
+  print('Age')
+  print(paste('Min: ', min(demos$Age, na.rm=TRUE), sep=""))
+  print(paste('Max: ', max(demos$Age, na.rm=TRUE), sep=""))
+  print(paste('Mean: ', mean(demos$Age, na.rm=TRUE), sep=""))
+  print(paste('SD: ', sd(demos$Age, na.rm=TRUE), sep=""))
+}
+
+get_sub_info(demos)
