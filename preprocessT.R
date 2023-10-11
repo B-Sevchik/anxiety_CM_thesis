@@ -3,7 +3,7 @@ library (dplyr)
 #DRAG TASK exclude people from drag task if they have reached the 10th trial and still haven't learned it
 
 drag_df <- df %>%
-  filter(sectionType == 'mainTask' & taskName == 'networkDragTask') %>%
+  filter(taskName == 'networkDragTask') %>%
   select(subject, trialCount, trialAttempt, RT, nCorrect, dragThreat, dragAcc, swappedThreat, swappedAcc,
          slot0Acc, slot0CurrentType, slot0CorrectType, slot0CurrentSRC, slot0CorrectSRC, slot1Acc, 
          slot1CurrentType, slot1CorrectType,slot1CurrentSRC, slot1CorrectSRC,
@@ -38,8 +38,8 @@ excluded_drag_subjects
 
 #ILLEGAL TRANSITION TASK PERMUTATION-BASED EXCLUSION
 illegal_df <- df %>% 
-  filter(sectionType == 'mainTask' & taskName == "illegalTransitionTask") %>% 
-  select(subject, transitionTpe, transitionThreatKind, trialCount, blockTrialCount, block, RT, acc, activeNodeCommunityCongruency:transitionThreatKind)
+  filter(taskName == "illegalTransitionTask") %>% 
+  select(subject, transitionType, transitionThreatKind, trialCount, blockTrialCount, block, RT, acc, activeNodeCommunityCongruency:transitionThreatKind)
 illegal_df
 
 acc_illegal_df <- illegal_df %>%
@@ -116,7 +116,7 @@ excluded_subjects
 
 #DEMOGRAPHICS
 
-demos <- read_csv('/Users/brookesevchik/Box/Data/Anxiety_Cognitive_Maps/all_participants/SubjectInfo.csv') %>% 
+demos <- read_csv('/Users/brookesevchik/Box/Data/Anxiety_Cognitive_Maps/All Participants/SubjectInfo.csv') %>% 
   filter(! workerID %in% excluded_subjects$subject)
 demos
 
