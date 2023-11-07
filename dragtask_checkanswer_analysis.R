@@ -81,7 +81,7 @@ slot_images <- slot_srcs %>%
 
 slot_images
 
-#score 1
+#SCORE 1
 #next step: use the summarise function on slot_images to calculate, for each (group by) unique subject, trialCount, and src,
 #the sum of correct placements (sum of acc column) across trial attempts. 
 sum_correct_trials_df <- slot_images %>%
@@ -95,6 +95,7 @@ first_correct_df <- slot_images %>%
   filter(acc == 1) %>% 
   group_by(subject, trialCount, src) %>% 
   summarise(first_correct = first(trialAttempt))
+first_correct_df
 
 #SCORE 3
 
@@ -106,11 +107,13 @@ first_correct_no_further_mistakes_df <- slot_images %>%
          no_skip = ifelse(is.na(no_skip), FALSE, no_skip)) %>% 
   filter(no_skip == FALSE) %>% 
   summarise(first_correct_no_further_mistakes = last(trialAttempt))
+first_correct_no_further_mistakes_df
 
 #join together all scores
 scores <- sum_correct_trials_df %>% 
   left_join(first_correct_df, by = c("subject", "trialCount", "src")) %>% 
   left_join(first_correct_no_further_mistakes_df, by = c("subject", "trialCount", "src"))
+scores
 
 #next step after that, group by subject and src (collapse across trials) to find the average accuracy score for each trial
 average_scores <- scores %>%
@@ -136,3 +139,41 @@ src_average_scores
 ggplot(src_average_scores, aes(x = condition, y = scores3_mean, fill=condition)) +
   geom_boxplot(alpha=0.5) +
   geom_jitter()
+
+
+
+#FIND HOW CLOSELY SCORES 1, 2, AND 3 ARE CORRELATED
+average_scores
+
+correlation_score_1_2 <- cor(average_scores$score1, average_scores$score2)
+correlation_score_1_2
+#-0.05104364 : very weak negative correlation between scores 1 & 2
+
+linear_model_1_2 <- lm(score1 ~ score2, data = average_scores)
+summary(linear_model_1_2)
+
+
+
+correlation_score_2_3 <- cor(average_scores$score2, average_scores$score3)
+correlation_score_2_3
+#0.9582086 very strong positive correlation between scores 2&3 (makes sense as they are almost the same measure)
+
+linear_model_2_3 <- lm(score2 ~ score3, data = average_scores)
+summary(linear_model_2_3)
+
+
+#correlation score 1 & 2 plot
+ggplot(average_scores, aes(x = score1, y = score2)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Correlation between Score 1 and Score 2",
+       x = "Score 1",
+       y = "Score 2")
+
+#correlation score 2 & 3 plot
+ggplot(average_scores, aes(x = score2, y = score3)) +
+  geom_point() +
+  geom_smooth(method = "lm", se = FALSE, color = "blue") +
+  labs(title = "Correlation between Score 2 and Score 3",
+       x = "Score 2",
+       y = "Score 3")
