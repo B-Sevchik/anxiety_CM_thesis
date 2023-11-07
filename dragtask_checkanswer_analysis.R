@@ -15,7 +15,6 @@ check_answer_df <- df %>%
          slot8Acc, slot8CurrentType, slot8CorrectType, slot8CurrentSRC, slot8CorrectSRC,
          slot9Acc, slot9CurrentType, slot9CorrectType, slot9CurrentSRC, slot9CorrectSRC)
 write_csv(check_answer_df, 'data/checkAnswer.csv')
-check_answer_df
 
 
 # finding trial attempts by trial and subject
@@ -87,7 +86,7 @@ slot_images
 sum_correct_trials_df <- slot_images %>%
   group_by(subject, trialCount, src) %>%
   summarise(sum_correct_trials = sum(acc))
-sum_correct_trials_df
+
 
 #SCORE 2
 first_correct_df <- slot_images %>% 
@@ -95,7 +94,7 @@ first_correct_df <- slot_images %>%
   filter(acc == 1) %>% 
   group_by(subject, trialCount, src) %>% 
   summarise(first_correct = first(trialAttempt))
-first_correct_df
+
 
 #SCORE 3
 
@@ -107,13 +106,13 @@ first_correct_no_further_mistakes_df <- slot_images %>%
          no_skip = ifelse(is.na(no_skip), FALSE, no_skip)) %>% 
   filter(no_skip == FALSE) %>% 
   summarise(first_correct_no_further_mistakes = last(trialAttempt))
-first_correct_no_further_mistakes_df
+
 
 #join together all scores
 scores <- sum_correct_trials_df %>% 
   left_join(first_correct_df, by = c("subject", "trialCount", "src")) %>% 
   left_join(first_correct_no_further_mistakes_df, by = c("subject", "trialCount", "src"))
-scores
+write_csv(check_answer_df, 'data/dragTask/rawScores.csv')
 
 #next step after that, group by subject and src (collapse across trials) to find the average accuracy score for each trial
 average_scores <- scores %>%
@@ -122,7 +121,7 @@ average_scores <- scores %>%
             score1 = mean(sum_correct_trials), 
             score2 = mean(first_correct),
             score3 = mean(first_correct_no_further_mistakes))
-average_scores
+write_csv(check_answer_df, 'data/dragTask/averageScores.csv')
 
 #last step, group by just src to find mean accuracy score for each 
 src_average_scores <- average_scores %>%
@@ -134,7 +133,7 @@ src_average_scores <- average_scores %>%
             scores3_mean = mean(score3), 
             score3_sem = std.error(score3)) %>% 
   mutate(condition = ifelse(grepl("threat", src), "threat", "neutral"))
-src_average_scores
+write_csv(check_answer_df, 'data/dragTask/SRCaverageScores.csv')
 
 ggplot(src_average_scores, aes(x = condition, y = scores3_mean, fill=condition)) +
   geom_boxplot(alpha=0.5) +
