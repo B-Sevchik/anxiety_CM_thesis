@@ -19,7 +19,7 @@ drag_df <- df %>%
          slot7Acc, slot7CurrentType, slot7CorrectType, slot7CurrentSRC, slot7CorrectSRC,
          slot8Acc, slot8CurrentType, slot8CorrectType, slot8CurrentSRC, slot8CorrectSRC,
          slot9Acc, slot9CurrentType, slot9CorrectType, slot9CurrentSRC, slot9CorrectSRC)
-write_csv(drop_df, 'data/dropEvent.csv')
+write_csv(drag_df, 'data/dropEvent.csv')
 
 # this gets us how many trials each person had , and how many attempts they took on each attempt
 drag_counts <- drag_df %>% 
