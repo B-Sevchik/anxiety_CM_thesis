@@ -111,7 +111,7 @@ first_correct_no_further_mistakes_df <- slot_images %>%
 scores <- sum_correct_trials_df %>% 
   left_join(first_correct_df, by = c("subject", "trialCount", "src")) %>% 
   left_join(first_correct_no_further_mistakes_df, by = c("subject", "trialCount", "src"))
-write_csv(check_answer_df, 'data/dragTask/rawScores.csv')
+write_csv(scores, 'data/dragTask/rawScores.csv')
 
 #next step after that, group by subject and src (collapse across trials) to find the average accuracy score for each trial
 average_scores <- scores %>%
@@ -120,7 +120,7 @@ average_scores <- scores %>%
             score1 = mean(sum_correct_trials), 
             score2 = mean(first_correct),
             score3 = mean(first_correct_no_further_mistakes))
-write_csv(check_answer_df, 'data/dragTask/averageScores.csv')
+write_csv(average_scores, 'data/dragTask/averageScores.csv')
 
 #last step, group by just src to find mean accuracy score for each 
 src_average_scores <- average_scores %>%
@@ -132,7 +132,7 @@ src_average_scores <- average_scores %>%
             scores3_mean = mean(score3), 
             score3_sem = std.error(score3)) %>% 
   mutate(condition = ifelse(grepl("threat", src), "threat", "neutral"))
-write_csv(check_answer_df, 'data/dragTask/SRCaverageScores.csv')
+write_csv(src_average_scores, 'data/dragTask/SRCaverageScores.csv')
 
 ggplot(src_average_scores, aes(x = condition, y = scores3_mean, fill=condition)) +
   geom_boxplot(alpha=0.5) +
