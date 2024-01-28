@@ -1,0 +1,51 @@
+subject,threattype,mean_score3,anxiety_level,anxiety_score
+a12abieib85r9u,neutral,1.6666666666666667,low to moderate trait anxiety,25
+a12abieib85r9u,threat,1,low to moderate trait anxiety,25
+a12d8yonw8tywu,neutral,1.1666666666666667,high trait anxiety,45
+a12d8yonw8tywu,threat,1.25,high trait anxiety,45
+a15sb9kagzmj4g,neutral,2.25,high trait anxiety,50.4
+a15sb9kagzmj4g,threat,2.3125,high trait anxiety,50.4
+a1fhkk0ru69ru,neutral,7.5,low to moderate trait anxiety,41
+a1fhkk0ru69ru,threat,9.4,low to moderate trait anxiety,41
+a1fkghyvtl6vvc,neutral,1.1666666666666667,low to moderate trait anxiety,40
+a1fkghyvtl6vvc,threat,1.25,low to moderate trait anxiety,40
+a1sljknsnhojrn,neutral,2.25,low to moderate trait anxiety,39
+a1sljknsnhojrn,threat,2.125,low to moderate trait anxiety,39
+a1sn7eozuw5vp3,neutral,1.8666666666666667,high trait anxiety,51
+a1sn7eozuw5vp3,threat,1.85,high trait anxiety,51
+a1vkzzxju11vn6,neutral,7,low to moderate trait anxiety,26
+a1vkzzxju11vn6,threat,3.75,low to moderate trait anxiety,26
+a1ziotmx864njx,neutral,3.8333333333333335,high trait anxiety,46
+a1ziotmx864njx,threat,4.5,high trait anxiety,46
+a20nnuvdl65rvv,neutral,2.5,high trait anxiety,47
+a20nnuvdl65rvv,threat,2.5,high trait anxiety,47
+a24z9rp5yzz2ty,neutral,2.1666666666666665,low to moderate trait anxiety,29
+a24z9rp5yzz2ty,threat,1.5,low to moderate trait anxiety,29
+a273wocs111dh0,neutral,6.666666666666667,low to moderate trait anxiety,28
+a273wocs111dh0,threat,5,low to moderate trait anxiety,28
+a2vo8c41jjiqy9,neutral,6.083333333333333,high trait anxiety,61
+a2vo8c41jjiqy9,threat,5.625,high trait anxiety,61
+a2vr9o234uct9t,neutral,1.5,low to moderate trait anxiety,31
+a2vr9o234uct9t,threat,1.25,low to moderate trait anxiety,31
+a2z58pti5rfdkk,neutral,1.3333333333333333,low to moderate trait anxiety,30
+a2z58pti5rfdkk,threat,1,low to moderate trait anxiety,30
+a3eqr9c0l23o6e,neutral,4.444444444444445,high trait anxiety,73
+a3eqr9c0l23o6e,threat,3.8333333333333335,high trait anxiety,73
+a3f293q71v7lxq,neutral,1.3333333333333333,low to moderate trait anxiety,31
+a3f293q71v7lxq,threat,1,low to moderate trait anxiety,31
+a3ntgjuqjig4n5,neutral,1.6666666666666667,low to moderate trait anxiety,34
+a3ntgjuqjig4n5,threat,1,low to moderate trait anxiety,34
+a3o0qzq4v2ixt7,neutral,6.166666666666667,low to moderate trait anxiety,33
+a3o0qzq4v2ixt7,threat,8.5,low to moderate trait anxiety,33
+a3uv55hc87do9c,neutral,1.537037037037037,low to moderate trait anxiety,37
+a3uv55hc87do9c,threat,2.75,low to moderate trait anxiety,37
+a7b9gor4ql3zv,neutral,1.3333333333333333,high trait anxiety,55
+a7b9gor4ql3zv,threat,1.5,high trait anxiety,55
+a9692y27lbxt9,neutral,10.5,high trait anxiety,58
+a9692y27lbxt9,threat,15,high trait anxiety,58
+a9w3mmlggwvt1,neutral,5,low to moderate trait anxiety,40
+a9w3mmlggwvt1,threat,5.25,low to moderate trait anxiety,40
+ax8nxtt8qmghc,neutral,1.5,low to moderate trait anxiety,35
+ax8nxtt8qmghc,threat,1.5,low to moderate trait anxiety,35
+azniefuivb2h0,neutral,1.8333333333333333,low to moderate trait anxiety,40
+azniefuivb2h0,threat,2,low to moderate trait anxiety,40

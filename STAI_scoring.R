@@ -54,6 +54,7 @@ STAI_df <- STAI_df %>%
 STAI_df <-STAI_df %>%
   group_by(subjectID) %>%
   mutate(sumVals = s1 + s2 + s3 + s4 + s5 + s6 + s7 + s8 + s9 + s10 + s11 + s12 + s13 + s14 + s15 + s16 + s17 + s18 + s19 + s20)
+STAI_df
 
 #classify anxiety levels based on STAI sum
 STAI_df <- STAI_df %>%
@@ -67,6 +68,5 @@ STAI_df
 
 #save out the file
 write.csv(STAI_df, 'data/STAI.csv')
-write.csv(STAI_df, '/Users/brookesevchik/Box/Data/Anxiety_Cognitive_Maps/all_participants/STAI_scores_calculated.csv') #EDIT PATH NAME EACH TIME
 
 
